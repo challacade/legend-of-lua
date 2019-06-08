@@ -1,5 +1,8 @@
 -- All sprites (images)
 sprites = {}
+sprites.background = love.graphics.newImage('images/background.png')
+sprites.linkTest = love.graphics.newImage('images/linkTest.png')
+sprites.hello = love.graphics.newImage('images/hello.png')
 
 -- All fonts
 fonts = {}
