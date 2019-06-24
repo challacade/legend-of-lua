@@ -1,6 +1,6 @@
 -- All sprites (images)
 sprites = {}
-sprites.background = love.graphics.newImage('images/background.png')
+sprites.background = love.graphics.newImage('images/palaceEntrance.png')
 sprites.linkTest = love.graphics.newImage('images/linkTest.png')
 sprites.linkWalkSheet = love.graphics.newImage('images/link_walk.png')
 sprites.hello = love.graphics.newImage('images/hello.png')

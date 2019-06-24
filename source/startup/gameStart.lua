@@ -8,6 +8,9 @@ function gameStart()
 
     anim8 = require("source/packages/anim8")
 
+    local windfield = require("source/packages/windfield")
+    world = windfield.newWorld()
+
     -- Load assets and resources
     require("source/startup/resources")
     require("source/player")
