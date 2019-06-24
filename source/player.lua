@@ -1,10 +1,11 @@
 -- Link's properties
 player = {}
-player.x = 0
-player.y = 0
-player.width = 96
-player.height = 144
+player.width = 96  -- width of the animation frames
+player.height = 144  -- height of the animation frames
 player.isMoving = false
+
+-- Physics properties
+player.collider = world:newCircleCollider(0, 0, 40)
 
 player.grids = {}
 player.grids.walk = anim8.newGrid(player.width, player.height, sprites.linkWalkSheet:getWidth(), sprites.linkWalkSheet:getHeight())
@@ -25,34 +26,35 @@ function player:update(dt)
         player.anim:update(dt)
     end
 
-    local previousX = player.x
-    local previousY = player.y
+    local vectorX = 0
+    local vectorY = 0
 
     -- Keyboard direction checks for movement
     if love.keyboard.isDown("left") then
-        player.x = player.x - 5
+        vectorX = -1
         player.anim = player.animations.walkLeft
     end
     if love.keyboard.isDown("right") then
-        player.x = player.x + 5
+        vectorX = 1
         player.anim = player.animations.walkRight
     end
     if love.keyboard.isDown("up") then
-        player.y = player.y - 5
+        vectorY = -1
         player.anim = player.animations.walkUp
     end
     if love.keyboard.isDown("down") then
-        player.y = player.y + 5
+        vectorY = 1
         player.anim = player.animations.walkDown
     end
 
+    player.collider:setLinearVelocity(vectorX * 300, vectorY * 300)
+
     -- Check if player is moving
-    -- (if player's previous position is different from current position)
-    if previousX ~= player.x or previousY ~= player.y then
-        player.isMoving = true
-    else
+    if vectorX == 0 and vectorY == 0 then
         player.isMoving = false
         player.anim:gotoFrame(8) -- go to standing frame
+    else
+        player.isMoving =  true
     end
 
     if love.keyboard.isDown("h") then
@@ -65,8 +67,8 @@ end
 
 function player:draw()
 
-    local px = player.x
-    local py = player.y
+    local px = player.collider:getX()
+    local py = player.collider:getY()
 
     -- sx represents the scale on the x axis for the player animation
     -- If it is -1, the animation will flip horizontally (for walking left)
