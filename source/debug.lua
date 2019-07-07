@@ -25,6 +25,18 @@ function debug:playerPosition()
 
 end
 
+function debug:playerDir()
+
+    love.graphics.setColor(0, 0, 0, 0.7)
+    love.graphics.rectangle("fill", 16, 16, 660, 220)
+
+    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setFont(fonts.debug)
+    love.graphics.print("score: " .. score, 50, 32)
+    love.graphics.print("player.dir: " .. player.dir, 50, 118)
+
+end
+
 function debug:origin()
 
     love.graphics.setColor(0, 0, 1, 1)
