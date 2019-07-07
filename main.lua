@@ -3,11 +3,11 @@ function love.load()
     require("source/startup/gameStart")
     gameStart()
 
-    testWall = world:newRectangleCollider(282, -90, 198, 188)
-    testWall:setType('static')
+    score = 0
 
-    testWall2 = world:newRectangleCollider(-486, -90, 198, 188)
-    testWall2:setType('static')
+    button = world:newRectangleCollider(-48, 180, 96, 96)
+    button:setCollisionClass("Button")
+    button:setType('static')
 
 end
 
@@ -26,7 +26,7 @@ function love.draw()
 
         -- Draw the background image
         love.graphics.setColor(1, 1, 1, 1)
-        love.graphics.draw(sprites.background, -1527, -900)
+        love.graphics.draw(sprites.background, -1524, -742)
 
         player:draw()
 
@@ -37,12 +37,16 @@ function love.draw()
 
 end
 
-function love.keypressed(k)
+function love.keypressed(key)
     
     -- Resets the player's position to (0, 0)
-    if k == "r" then
+    if key == "r" then
         player.collider:setPosition(0, 0)
         player.collider:setLinearVelocity(0, 0)
+    end
+
+    if key == 'space' then
+        player:interact()
     end
 
 end

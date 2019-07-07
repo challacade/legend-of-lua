@@ -10,6 +10,10 @@ function gameStart()
 
     local windfield = require("source/packages/windfield")
     world = windfield.newWorld()
+    world:setQueryDebugDrawing(true)
+
+    require("source/startup/collisionClasses")
+    createCollisionClasses()
 
     -- Load assets and resources
     require("source/startup/resources")
