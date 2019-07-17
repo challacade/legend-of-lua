@@ -5,15 +5,17 @@ function love.load()
 
     score = 0
 
-    button = world:newRectangleCollider(-48, 180, 96, 96)
-    button:setCollisionClass("Button")
-    button:setType('static')
+    spawnChest(150, -250, "key")
+    spawnChest(-246, -250, "heartPiece")
+    spawnChest(-246, 76, "bombs")
+    spawnChest(150, 76, "rupees50")
 
 end
 
 function love.update(dt)
 
     player:update(dt)
+    chests:update(dt)
     world:update(dt)
 
 end
@@ -28,6 +30,7 @@ function love.draw()
         love.graphics.setColor(1, 1, 1, 1)
         love.graphics.draw(sprites.background, -1524, -742)
 
+        chests:draw()
         player:draw()
 
         love.graphics.setLineWidth(5)
