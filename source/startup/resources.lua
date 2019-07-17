@@ -3,7 +3,15 @@ sprites = {}
 sprites.background = love.graphics.newImage('images/palaceRoom.png')
 sprites.linkTest = love.graphics.newImage('images/linkTest.png')
 sprites.linkWalkSheet = love.graphics.newImage('images/link_walk.png')
+sprites.chestClosed = love.graphics.newImage('images/chestClosed.png')
+sprites.chestOpen = love.graphics.newImage('images/chestOpen.png')
 sprites.hello = love.graphics.newImage('images/hello.png')
+
+sprites.items = {}
+sprites.items.key = love.graphics.newImage('images/key.png')
+sprites.items.bombs = love.graphics.newImage('images/bombs.png')
+sprites.items.heartPiece = love.graphics.newImage('images/heartPiece.png')
+sprites.items.rupees50 = love.graphics.newImage('images/rupees50.png')
 
 -- All fonts
 fonts = {}

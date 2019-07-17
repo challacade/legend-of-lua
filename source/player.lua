@@ -107,9 +107,9 @@ function player:interact()
         py = py + 60
     end
 
-    local colliders = world:queryCircleArea(px, py, 40, {"Button"})
-    if #colliders > 0 then
-        score = score + 1
+    local colliders = world:queryCircleArea(px, py, 40, {"Button", "Chest"})
+    for i,c in ipairs(colliders) do
+        c:interact()
     end
 
 end

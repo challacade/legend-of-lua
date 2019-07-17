@@ -18,5 +18,6 @@ function gameStart()
     -- Load assets and resources
     require("source/startup/resources")
     require("source/player")
+    require("source/objects/chest")
 
 end
