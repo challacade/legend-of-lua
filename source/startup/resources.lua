@@ -1,11 +1,14 @@
 -- All sprites (images)
 sprites = {}
-sprites.background = love.graphics.newImage('images/palaceRoom.png')
+sprites.background = love.graphics.newImage('images/palaceRoom2.png')
 sprites.linkTest = love.graphics.newImage('images/linkTest.png')
 sprites.linkWalkSheet = love.graphics.newImage('images/link_walk.png')
 sprites.chestClosed = love.graphics.newImage('images/chestClosed.png')
 sprites.chestOpen = love.graphics.newImage('images/chestOpen.png')
 sprites.hello = love.graphics.newImage('images/hello.png')
+sprites.lampFire = love.graphics.newImage('images/lampFire.png')
+sprites.torch_unlit = love.graphics.newImage('images/torch_unlit.png')
+sprites.torch_lit = love.graphics.newImage('images/torch_lit.png')
 
 sprites.items = {}
 sprites.items.key = love.graphics.newImage('images/key.png')

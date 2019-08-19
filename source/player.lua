@@ -4,6 +4,7 @@ player.width = 96  -- width of the animation frames
 player.height = 144  -- height of the animation frames
 player.isMoving = false
 player.dir = "down"
+player.item = 1 -- number corresponds to some item
 
 -- Physics properties
 player.collider = world:newCircleCollider(0, 0, 40)
@@ -94,22 +95,21 @@ function player:draw()
 end
 
 function player:interact()
-
-    local px, py = player.collider:getPosition()
-
-    if player.dir == "right" then
-        px = px + 60
-    elseif player.dir == "left" then
-        px = px - 60
-    elseif player.dir == "up" then
-        py = py - 60
-    elseif player.dir == "down" then
-        py = py + 60
-    end
+    
+    local px, py = getLinkFrontPosition(60)
 
     local colliders = world:queryCircleArea(px, py, 40, {"Button", "Chest"})
     for i,c in ipairs(colliders) do
         c:interact()
+    end
+
+end
+
+function player:useItem()
+
+    -- 1: Lamp
+    if player.item == 1 then
+        spawnLampFire()
     end
 
 end

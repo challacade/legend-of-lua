@@ -19,5 +19,9 @@ function gameStart()
     require("source/startup/resources")
     require("source/player")
     require("source/objects/chest")
+    require("source/objects/torch")
+    require("source/items/lamp")
+
+    require("source/global")
 
 end

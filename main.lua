@@ -5,10 +5,9 @@ function love.load()
 
     score = 0
 
-    spawnChest(150, -250, "key")
-    spawnChest(-246, -250, "heartPiece")
-    spawnChest(-246, 76, "bombs")
-    spawnChest(150, 76, "rupees50")
+    spawnTorch(-480, 194, 0)
+    spawnTorch(-480, -290, 0)
+    spawnTorch(384, 194, 0)
 
 end
 
@@ -16,6 +15,8 @@ function love.update(dt)
 
     player:update(dt)
     chests:update(dt)
+    lampFires:update(dt)
+    torches:update(dt)
     world:update(dt)
 
 end
@@ -31,10 +32,12 @@ function love.draw()
         love.graphics.draw(sprites.background, -1524, -742)
 
         chests:draw()
+        torches:draw()
+        lampFires:draw()
         player:draw()
 
         love.graphics.setLineWidth(5)
-        world:draw()
+        --world:draw()
 
     cam:detach()
 
@@ -50,6 +53,7 @@ function love.keypressed(key)
 
     if key == 'space' then
         player:interact()
+        player:useItem()
     end
 
 end
