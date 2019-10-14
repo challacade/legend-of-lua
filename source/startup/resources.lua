@@ -9,6 +9,8 @@ sprites.hello = love.graphics.newImage('images/hello.png')
 sprites.lampFire = love.graphics.newImage('images/lampFire.png')
 sprites.torch_unlit = love.graphics.newImage('images/torch_unlit.png')
 sprites.torch_lit = love.graphics.newImage('images/torch_lit.png')
+sprites.bomb = love.graphics.newImage('images/bomb_sheet.png')
+sprites.explosion = love.graphics.newImage('images/explosion_sheet.png')
 
 sprites.items = {}
 sprites.items.key = love.graphics.newImage('images/key.png')

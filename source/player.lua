@@ -4,7 +4,7 @@ player.width = 96  -- width of the animation frames
 player.height = 144  -- height of the animation frames
 player.isMoving = false
 player.dir = "down"
-player.item = 1 -- number corresponds to some item
+player.item = 2 -- number corresponds to some item
 
 -- Physics properties
 player.collider = world:newCircleCollider(0, 0, 40)
@@ -110,6 +110,9 @@ function player:useItem()
     -- 1: Lamp
     if player.item == 1 then
         spawnLampFire()
+    -- 2: Bomb
+    elseif player.item == 2 then
+        spawnBomb()
     end
 
 end
