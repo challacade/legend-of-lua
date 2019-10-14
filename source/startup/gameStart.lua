@@ -21,6 +21,8 @@ function gameStart()
     require("source/objects/chest")
     require("source/objects/torch")
     require("source/items/lamp")
+    require("source/items/bomb")
+    require("source/environment/explosion")
 
     require("source/global")
 

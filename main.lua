@@ -17,6 +17,8 @@ function love.update(dt)
     chests:update(dt)
     lampFires:update(dt)
     torches:update(dt)
+    bombs:update(dt)
+    explosions:update(dt)
     world:update(dt)
 
 end
@@ -34,7 +36,9 @@ function love.draw()
         chests:draw()
         torches:draw()
         lampFires:draw()
+        bombs:draw()
         player:draw()
+        explosions:draw()
 
         love.graphics.setLineWidth(5)
         --world:draw()
