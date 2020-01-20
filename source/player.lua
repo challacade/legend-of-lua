@@ -6,6 +6,10 @@ player.isMoving = false
 player.dir = "down"
 player.item = 2 -- number corresponds to some item
 
+-- Health; Player starts at full hearts
+player.max_hearts = 3
+player.hearts = player.max_hearts
+
 -- Physics properties
 player.collider = world:newCircleCollider(0, 0, 40)
 player.collider:setCollisionClass("Player")
@@ -113,6 +117,30 @@ function player:useItem()
     -- 2: Bomb
     elseif player.item == 2 then
         spawnBomb()
+    end
+
+end
+
+-- Draws the hearts to the upper-left corner of the screen
+function player:drawHealth()
+
+    local width = sprites.heart_filled:getWidth() + 10
+    
+    for i=1, player.max_hearts do
+    
+        local offset = (i-1) * width
+        local heartSprite = sprites.heart_filled
+
+        if i > player.hearts then
+            heartSprite = sprites.heart_empty
+        end
+
+        if player.hearts - i == -0.5 then
+            heartSprite = sprites.heart_half
+        end
+
+        love.graphics.draw(heartSprite, 10 + offset, 10)
+        
     end
 
 end
