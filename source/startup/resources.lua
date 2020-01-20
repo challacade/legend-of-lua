@@ -11,6 +11,9 @@ sprites.torch_unlit = love.graphics.newImage('images/torch_unlit.png')
 sprites.torch_lit = love.graphics.newImage('images/torch_lit.png')
 sprites.bomb = love.graphics.newImage('images/bomb_sheet.png')
 sprites.explosion = love.graphics.newImage('images/explosion_sheet.png')
+sprites.heart_filled = love.graphics.newImage('images/heart_filled.png')
+sprites.heart_empty = love.graphics.newImage('images/heart_empty.png')
+sprites.heart_half = love.graphics.newImage('images/heart_half.png')
 
 sprites.items = {}
 sprites.items.key = love.graphics.newImage('images/key.png')

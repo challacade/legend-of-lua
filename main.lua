@@ -45,6 +45,8 @@ function love.draw()
 
     cam:detach()
 
+    player:drawHealth()
+
 end
 
 function love.keypressed(key)
@@ -58,6 +60,14 @@ function love.keypressed(key)
     if key == 'space' then
         player:interact()
         player:useItem()
+    end
+
+    if key == '1' then
+        player.hearts = player.hearts - 0.5
+    end
+
+    if key == '2' then
+        player.hearts = player.hearts + 0.5
     end
 
 end
