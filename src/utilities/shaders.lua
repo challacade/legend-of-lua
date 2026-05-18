@@ -2,14 +2,19 @@ shaders = {}
 
 -- NOTE: These shaders are written using GLSL for Love2D
 
+-- For web compatibility:
+-- WebGL/GLES forbids initializers on uniform/extern declarations and
+-- on file-scope 'number' (= mediump float). Use plain declarations and
+-- 'const float' for compile-time constants.
+
 -- Hole-punch light source
 shaders.simpleLight = love.graphics.newShader[[
-    extern number playerX = 0;
-    extern number playerY = 0;
+    extern number playerX;
+    extern number playerY;
 
-    number radius = 400;
+    const float radius = 400.0;
     vec4 effect( vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords ) {
-        number distance = pow(pow(screen_coords.x - playerX, 2) + pow(screen_coords.y - playerY, 2), 0.5);
+        number distance = pow(pow(screen_coords.x - playerX, 2.0) + pow(screen_coords.y - playerY, 2.0), 0.5);
         if (distance < radius) {
             return vec4(0, 0, 0, 0);
         }
@@ -21,12 +26,12 @@ shaders.simpleLight = love.graphics.newShader[[
 
 -- Faded light source
 shaders.trueLight = love.graphics.newShader[[
-    extern number playerX = 0;
-    extern number playerY = 0;
+    extern number playerX;
+    extern number playerY;
 
-    number radius = 900;
+    const float radius = 900.0;
     vec4 effect( vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords ) {
-        number distance = pow(pow(screen_coords.x - playerX, 2) + pow(screen_coords.y - playerY, 2), 0.5);
+        number distance = pow(pow(screen_coords.x - playerX, 2.0) + pow(screen_coords.y - playerY, 2.0), 0.5);
         number alpha = distance / radius;
         return vec4(0, 0, 0, alpha);
     }
@@ -36,7 +41,7 @@ shaders.trueLight = love.graphics.newShader[[
 shaders.whiteout = love.graphics.newShader[[
     vec4 effect( vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords ) {
         vec4 pixel = Texel(texture, texture_coords);
-        if (pixel.a == 1) {
+        if (pixel.a == 1.0) {
             return vec4(1, 1, 1, 1);
         } else {
             return vec4(0, 0, 0, 0);

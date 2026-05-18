@@ -14,7 +14,14 @@ function gameStart()
     fullscreen = true
     testWindow = false
     vertical = false
-    setWindowSize(fullscreen, 1920, 1080)
+    if love.system.getOS() ~= "Web" then
+        setWindowSize(fullscreen, 1920, 1080)
+    else
+        -- Web (love.js): canvas size is fixed by conf.lua. getWidth/Height
+        -- returns 0 this early, so hardcode to avoid scale=0.
+        windowWidth = 1920
+        windowHeight = 1080
+    end
 
     if vertical then
         fullscreen = false
