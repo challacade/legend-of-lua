@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, minimum-scale=1, maximum-scale=1">
+    <title>__TITLE__</title>
+    __BASE_TAG__
+    <!-- Spinner styles from the love.js player. -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        overflow: hidden;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      /* Size the canvas to the game's native aspect ratio so it fills the
+         viewport without internal letterboxing. object-fit letterboxes *inside*
+         the element which misaligns Emscripten's mouse-coordinate mapping. */
+      #canvas {
+        aspect-ratio: 1920 / 1080;
+        max-width: 100vw;
+        max-height: 100vh;
+        width: auto;
+        height: auto;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
+    <div id="spinner" class="pending"></div>
+    <div id="loading-msg" style="position:fixed;top:calc(50% + 84px);left:0;right:0;text-align:center;color:#ccc;font-family:sans-serif;font-size:1em;pointer-events:none">Loading...</div>
+    <script>
+      (function() {
+        var msg = document.getElementById('loading-msg');
+        new MutationObserver(function(_, obs) {
+          if (!document.getElementById('spinner').className) {
+            msg.style.display = 'none';
+            obs.disconnect();
+          }
+        }).observe(document.getElementById('spinner'), { attributes: true, attributeFilter: ['class'] });
+      })();
+    </script>
+    <!-- player.js fetches game.love, boots the love2d WASM runtime, and handles
+         save-data persistence (periodic IDB sync + pagehide keepalive).
+
+         The `&n=1` flag disables player.js's IndexedDB cache of the .love
+         archive (EM_PRELOAD_CACHE / PACKAGES). That cache is keyed by URI
+         and replays the FIRST bytes ever served FOREVER -- it silently
+         ignores rebuilds and skips ZIP-header validation, which cost hours
+         of debugging. End-user caching is unaffected: the browser's normal
+         HTTP disk cache still serves the .love on return visits per the
+         server's Cache-Control headers. Keep `&n=1` on. -->
+    <script src="player.js?g=legend-of-lua.love&n=1"></script>
+  </body>
+</html>
