@@ -2,7 +2,7 @@
 
 # Legend of Lua
 
-Open-source Love2D Zelda-like game. Playable in-browser (using love.js), try it here: https://challacade.com/games/legend-of-lua
+Open-source Love2D Zelda-like game. Playable in-browser (using love.js), try it here: https://www.challacade.com/games/legend-of-lua
 
 This project can be run locally like any other Love2D game. For instructions on this process, see my video on installation and setup:
 https://www.youtube.com/watch?v=kpxkQldiNPU
